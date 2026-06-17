@@ -149,7 +149,7 @@ export default function LandingPage({ onYes }) {
           <p className="press-blink">PRESS YES TO CONTINUE</p>
           <h1 className="title">PRESS START</h1>
           <div className="subtitle-box">
-            <p className="subtitle">An Improvised Musical?</p>
+            <p className="subtitle">An Improvised Musical</p>
           </div>
           <div className="question-box">
             <p className="question">WILL YOU ATTEND</p>
