@@ -232,7 +232,24 @@ body {
 
 .hud-item { letter-spacing: 1px; }
 .hud-val { color: #ffec27; }
-.title-small { color: #ff004d; font-size: 10px; }
+
+.game-lock-msg {
+  text-align: center;
+  padding: 6px 0 4px;
+}
+.lock-title {
+  font-size: 11px;
+  color: #ff004d;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(255,0,77,0.6);
+  margin: 0 0 4px;
+}
+.lock-sub {
+  font-size: 9px;
+  color: #ffec27;
+  letter-spacing: 2px;
+  margin: 0;
+}
 
 .canvas-wrap {
   position: relative;

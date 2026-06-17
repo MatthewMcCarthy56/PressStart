@@ -219,9 +219,12 @@ export default function MiniGame({ onWin }) {
     <div className="game-screen">
       <div className="scanlines" />
       <div className="game-ui">
+        <div className="game-lock-msg">
+          <p className="lock-title">Oh No! The Ticket Portal is Locked!</p>
+          <p className="lock-sub">Play to Unlock Access</p>
+        </div>
         <div className="game-hud">
           <span className="hud-item">SCORE: <span className="hud-val">{score}</span></span>
-          <span className="hud-item title-small">BREAKOUT</span>
           <span className="hud-item">LIVES: <span className="hud-val">{'♥ '.repeat(lives).trim()}</span></span>
         </div>
         <div className="canvas-wrap">
