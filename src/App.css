@@ -72,10 +72,18 @@ body {
   color: #fff;
   border-color: #ff6688;
   box-shadow: 4px 4px 0 #660022;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .btn-no:hover {
   background: #ff2255;
+}
+
+@media (hover: none) {
+  .btn-no:active {
+    transform: none;
+    box-shadow: 4px 4px 0 #660022;
+  }
 }
 
 /* ── LANDING PAGE ── */

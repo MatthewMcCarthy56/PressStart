@@ -157,7 +157,7 @@ export default function LandingPage({ onYes }) {
           </div>
           <div className="buttons">
             <button className="btn btn-yes" onClick={onYes}>
-              YES
+              YES!
             </button>
 
             {/* Placeholder keeps layout stable once No goes fixed */}
@@ -181,7 +181,7 @@ export default function LandingPage({ onYes }) {
               }
               onClick={handleNoClick}
             >
-              NO
+              NO 🥷
             </button>
           </div>
         </div>
