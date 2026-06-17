@@ -53,9 +53,16 @@ export default function MiniGame({ onWin }) {
 
     const onMouseMove = (e) => {
       const rect = canvas.getBoundingClientRect()
-      stateRef.current.mouseX = e.clientX - rect.left
+      stateRef.current.mouseX = (e.clientX - rect.left) * (CANVAS_W / rect.width)
+    }
+    const onTouchMove = (e) => {
+      e.preventDefault()
+      const rect = canvas.getBoundingClientRect()
+      const touch = e.touches[0]
+      stateRef.current.mouseX = (touch.clientX - rect.left) * (CANVAS_W / rect.width)
     }
     canvas.addEventListener('mousemove', onMouseMove)
+    canvas.addEventListener('touchmove', onTouchMove, { passive: false })
 
     function draw() {
       const s = stateRef.current
@@ -138,10 +145,8 @@ export default function MiniGame({ onWin }) {
       }
 
       // Brick collisions
-      let bricksLeft = 0
       for (const b of s.bricks) {
         if (!b.alive) continue
-        bricksLeft++
         if (
           s.ball.x + BALL_R > b.x &&
           s.ball.x - BALL_R < b.x + BRICK_W &&
@@ -149,7 +154,6 @@ export default function MiniGame({ onWin }) {
           s.ball.y - BALL_R < b.y + BRICK_H
         ) {
           b.alive = false
-          bricksLeft--
           s.score += b.points
           setScore(s.score)
 
@@ -167,7 +171,7 @@ export default function MiniGame({ onWin }) {
         }
       }
 
-      if (bricksLeft === 0) {
+      if (s.bricks.every((b) => !b.alive)) {
         s.status = 'won'
         cancelAnimationFrame(animRef.current)
         onWinRef.current()
@@ -200,6 +204,7 @@ export default function MiniGame({ onWin }) {
     return () => {
       cancelAnimationFrame(animRef.current)
       canvas.removeEventListener('mousemove', onMouseMove)
+      canvas.removeEventListener('touchmove', onTouchMove)
     }
   }, [])
 
@@ -234,7 +239,7 @@ export default function MiniGame({ onWin }) {
             </div>
           )}
         </div>
-        <p className="game-tip">MOVE MOUSE TO CONTROL PADDLE</p>
+        <p className="game-tip">{'ontouchstart' in window ? 'TOUCH SCREEN TO CONTROL PADDLE' : 'MOVE MOUSE TO CONTROL PADDLE'}</p>
       </div>
     </div>
   )
